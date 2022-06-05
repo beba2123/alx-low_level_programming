@@ -1,25 +1,30 @@
-#include <stdio.h>
+#include<stdio.h>
+
 /**
- * main - entry point
+ * main - Entry point
  *
- * Return: Always 0 (success/correct)
- */
+ * Description: print 0, 1, - 9
+ *
+ * Return: Always 0 (Success)
+*/
+
 int main(void)
-
 {
-char base_16;
+	int digit = 0;
 
-for (base_16 = 48; base_16 <= 57; base_16++)
-{putchar(base_16);
-}
+	while (digit <= 9)
+	{
+		putchar(digit + 48);
 
-for (base_16 = 97 ; base_16 <= 102; base_16++)
-{
-putchar(base_16);
-}
+		if (digit != 9)
+		{
+			putchar(',');
+			putchar(' ');
+		}
 
-putchar ('\n');
+		++digit;
+	}
+	putchar('\n');
 
-return (0);
-
+	return (0);
 }
