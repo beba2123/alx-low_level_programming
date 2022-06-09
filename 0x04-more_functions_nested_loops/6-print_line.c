@@ -1,18 +1,20 @@
 #include "holberton.h"
-#include <stdio.h>
 
 /**
- * print_line - Print line dependent on the integer n.
- * @n : The number of '_' characters to use
- * Return: Void.
+ * print_line - draws a straight line in the terminal.
+ * @n: use this integer to determine the number of lines to be printed.
+ *
+ * Return: print n number of lines and new line if n is not less than
+ * or equal to 0 else new line.
  */
 void print_line(int n)
 {
-	int i;
+	int c = 0;
 
-	for (i = 0; i < n; i++)
+	while ((c <  n) && (n > 0))
 	{
 		_putchar('_');
+		c++;
 	}
 	_putchar('\n');
 }

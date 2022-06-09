@@ -1,38 +1,32 @@
 #include "holberton.h"
-#include <stdio.h>
-#include <stdlib.h>
-
-int _putchar(char c);
 
 /**
- * print_number - like a hello world
+ * print_number - prints a number to the screen
+ * @n: the given number
  *
- * @n: params an integer
- *
- * No return
+ * Return: nothing
  */
-
-
 void print_number(int n)
 {
-
-	unsigned int n1 = 0;
-
-	if  (n < 0)
+	if (n < 0)
 	{
-		n1 = -n;
 		_putchar('-');
+		print_unsigned_int(-(unsigned int)n);
 	}
-
 	else
-	{
-		n1 = n;
-	}
-
-	if (n1 / 10)
-	{
-		print_number(n1 / 10);
-	}
-
-	_putchar((n1 % 10) + '0');
+		print_unsigned_int(n);
 }
+
+/**
+ * print_unsigned_int - prints an unsigned integer
+ * @n: given unsigned integer
+ *
+ * Return: nothing
+ */
+void print_unsigned_int(unsigned int n)
+{
+	if (n / 10)
+		print_unsigned_int(n / 10);
+	_putchar((n % 10) + '0');
+}
+
