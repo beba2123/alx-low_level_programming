@@ -1,24 +1,24 @@
 #include <stdio.h>
 
 /**
- * main -  checks for checks for a digit (0 through 9).
+ * main -  calculate largest prime of 612852475143
  *
- * Return: Always 0.
+ * Return: Success Always
  */
+
+
 int main(void)
 {
-	long x, y;
+	long int x = 612852475143;
+	long int py;
 
-	x = 612852475143;
-
-	for (y = 2; x > y; y++)
+	for (py = 2; py < x; py++)
 	{
-		while (x % y == 0)
+		if (x % py == 0)
 		{
-			x = x / y;
+			x = x / py;
 		}
 	}
-	printf("%lu", y);
-	putchar('\n');
+	printf("%ld\n", py);
 	return (0);
 }

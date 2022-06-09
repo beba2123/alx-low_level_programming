@@ -1,26 +1,31 @@
-#include "main.h"
+#include "holberton.h"
+#include <stdio.h>
 
 /**
- * print_triangle - Prints a triangle
- * @size: sets the size of the triangle
- *
- * Return: nothing
+ * print_triangle - Print triangle dependent on the parameter size.
+ * @size : The height of the triangle
+ * Return: Void.
  */
-
 void print_triangle(int size)
 {
-	int i, j;
-
-	if (size > 0)
-		for (i = size; i > 0; i--)
+	int i;
+	int x;
+	int spaces;
+;
+	for (i = 0; i < size; i++)
+	{
+		for (spaces = size - 1 - i; spaces > 0; spaces--)
 		{
-			for (j = 1; j <= size; j++)
-				if (j >= i)
-					_putchar('#');
-				else
-					_putchar(' ');
-			_putchar('\n');
+			_putchar(' ');
 		}
-	else
+		for (x = 0; x <= i; x++)
+		{
+			_putchar('#');
+		}
 		_putchar('\n');
+	}
+	if (size <= 0)
+	{
+		_putchar('\n');
+	}
 }
