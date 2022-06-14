@@ -33,3 +33,4 @@ int main(void)
 	*(key + 1) = '\n';
 	printf("%s", k);
 	return (0);
+}	
