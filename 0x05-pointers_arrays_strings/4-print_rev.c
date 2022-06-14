@@ -18,4 +18,4 @@ for (b = a - 1; b >= 0; b--)
 _putchar(s[b]);
 }
 _putchar('\n');
-}i
+}
