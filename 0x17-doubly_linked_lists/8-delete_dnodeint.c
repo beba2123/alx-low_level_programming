@@ -1,60 +1,50 @@
 #include "lists.h"
-/**
-  * dlistint_len - returns number of elements in doubly linked list.
-  * @h: ponter to head node of list.
-  *
-  * Return: number of elements in list.
-  */
-size_t dlistint_len(const dlistint_t *h)
-{
-	/* i is counter var */
-	size_t i = 0;
 
-	while (h != NULL)
+/**
+  * delete_dnodeint_at_index - Deletes the node at idx of a double linked list
+  * @head: header of double linked list
+  * @index: index of the node, starting from 0
+  * Return: 1 if it succeeded, -1 if it failed
+  */
+int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
+{
+	dlistint_t *pre, *headcopy = *head;
+	unsigned int i;
+
+	while (headcopy != NULL && headcopy->prev != NULL)
 	{
-		i++;
-		h = h->next;
+		headcopy = headcopy->prev;
+		*head = (*head)->prev;
 	}
-	return (i);
-}
-
-/**
-  * delete_nodeint_at_index - deletes node of a doubly linked list
-  * at a speified index.
-  * @head: pointer to head of d-list.
-  * @index: position of node to * 0 ;-)
-  *
-  * Return: 1 on success, -1 on failure.
-  */
-int delete_nodeint_at_index(dlistint_t **head, unsigned int index)
-{
-	unsigned int idx = 0;
-	dlistint_t *temp;
-
-	temp = *head;
-	if (*head == NULL || index > dlistint_len(temp))
+	if (headcopy != NULL && index != 0)
+	{
+		for (i = 0; i < index && headcopy != NULL; i++)
+		{
+			pre = headcopy;
+			headcopy = headcopy->next;
+		}
+		if (headcopy != NULL)
+		{
+			pre->next = headcopy->next;
+			if (pre->next != NULL)
+				headcopy->next->prev = pre;
+			free(headcopy);
+			return (1);
+		}
 		return (-1);
-	if (index == 0 && temp->next)
+	}
+	if (headcopy != NULL && index == 0)
 	{
-		temp->next->prev = NULL;
-		*head = temp->next;
-		free(temp);
+		pre = headcopy->next;
+		if (pre == NULL)
+			*head = NULL;
+		else
+		{
+			pre->prev = NULL;
+			free(headcopy);
+			*head = pre;
+		}
 		return (1);
 	}
-	else if (index == 0 && temp)
-	{
-		free(temp);
-		*head = NULL;
-		return (1);
-	}
-	while (idx < index)
-	{
-		temp = temp->next;
-		idx++;
-	}
-	temp->prev->next = temp->next;
-	if (temp->next)
-		temp->next->prev = temp->prev;
-	free(temp);
-	return (1);
+	return (-1);
 }
